@@ -7,9 +7,10 @@ interface IAccessTokenResponse {
 }
 
 interface IUserResponse {
-  avatar_url: string;
-  name: string;
   id: number;
+  name: string;
+  email: string;
+  avatar_url: string;
 }
 
 class AuthenticationUserService {
@@ -37,11 +38,11 @@ class AuthenticationUserService {
       }
     );
 
-    const { id, avatar_url, name } = response.data;
+    const { id, email, avatar_url, name } = response.data;
 
     let user = await prismaClient.user.findFirst({
       where: {
-        user_id: id,
+        email,
       },
     });
 
@@ -50,6 +51,7 @@ class AuthenticationUserService {
         data: {
           user_id: id,
           name,
+          email,
           avatar_url,
         },
       });
@@ -59,6 +61,7 @@ class AuthenticationUserService {
       {
         user: {
           name: user.name,
+          email: user.email,
           avatar_url: user.avatar_url,
           id: user.user_id,
         },
