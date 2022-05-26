@@ -3,11 +3,11 @@ import { CreateRankingService } from "../services/CreateRankingService";
 
 class CreateRankingController {
   async handle(request: Request, response: Response) {
-    const { guested, time } = request.body;
+    const { guessedTags, time } = request.body;
     const { user_id } = request;
 
     const service = new CreateRankingService();
-    const result = await service.execute(guested, time, user_id);
+    const result = await service.execute(guessedTags, time, user_id);
 
     return response.json(result);
   }

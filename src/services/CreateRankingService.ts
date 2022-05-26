@@ -1,10 +1,10 @@
 import prismaClient from "../prisma";
 
 class CreateRankingService {
-  async execute(guested: number, time: number, userId: string) {
+  async execute(guessedTags: number, time: number, userId: string) {
     const ranking = await prismaClient.ranking.create({
       data: {
-        guested,
+        guessedTags,
         time,
         userId,
       },
