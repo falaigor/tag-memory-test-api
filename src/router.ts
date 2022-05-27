@@ -3,18 +3,24 @@ import { AuthenticateUserController } from "./controllers/AuthenticateUserContro
 import { ProfileUserController } from "./controllers/ProfileUserController";
 import { CreateRankingController } from "./controllers/CreateRankingController";
 import { GetTopFiveRankingController } from "./controllers/GetTopFiveRankingController";
-import { ensureAuthenticade } from "./middleware/ensureAuthenticade";
+import { GetUserRankingController } from "./controllers/GetUserRankingController";
+import { ensureAuthenticate } from "./middleware/ensureAuthenticate";
 
 const router = Router();
 
 router.post("/authenticate", new AuthenticateUserController().handle);
 
-router.get("/profile", ensureAuthenticade, new ProfileUserController().handle);
+router.get("/profile", ensureAuthenticate, new ProfileUserController().handle);
 
 router.get("/ranking", new GetTopFiveRankingController().handle);
+router.get(
+  "/user-ranking",
+  ensureAuthenticate,
+  new GetUserRankingController().handle
+);
 router.post(
   "/ranking",
-  ensureAuthenticade,
+  ensureAuthenticate,
   new CreateRankingController().handle
 );
 
