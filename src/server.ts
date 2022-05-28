@@ -22,6 +22,6 @@ app.get("/auth/github/callback", (request, response) => {
   return response.json(code);
 });
 
-app.listen(process.env.SERVER_PORT || 4000, () =>
+app.listen(process.env.PORT || 3333, () =>
   console.log(`🚀 Server is runing on PORT ${process.env.SERVER_PORT}`)
 );
