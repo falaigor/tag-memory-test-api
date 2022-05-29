@@ -11,6 +11,7 @@ interface IUserResponse {
   name: string;
   email: string;
   avatar_url: string;
+  user_id: string;
 }
 
 class AuthenticationUserService {
@@ -42,7 +43,7 @@ class AuthenticationUserService {
 
     let user = await prismaClient.user.findFirst({
       where: {
-        email,
+        user_id: id,
       },
     });
 
