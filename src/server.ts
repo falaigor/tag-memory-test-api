@@ -8,6 +8,7 @@ const app = express();
 app.use(
   cors({
     origin: ["https://tag-memory-test.vercel.app/"],
+    optionsSuccessStatus: 200,
   })
 );
 app.use(express.json());
