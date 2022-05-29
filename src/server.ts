@@ -5,14 +5,12 @@ import { router } from "./router";
 
 const app = express();
 
+app.use(
+  cors({
+    origin: ["https://tag-memory-test.vercel.app/"],
+  })
+);
 app.use(express.json());
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  app.use(cors());
-  next();
-});
 
 app.use(router);
 
