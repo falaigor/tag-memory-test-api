@@ -13,15 +13,16 @@ router.post("/authenticate", new AuthenticateUserController().handle);
 router.get("/profile", ensureAuthenticate, new ProfileUserController().handle);
 
 router.get("/ranking", new GetTopFiveRankingController().handle);
-router.get(
-  "/user-ranking",
-  ensureAuthenticate,
-  new GetUserRankingController().handle
-);
 router.post(
   "/ranking",
   ensureAuthenticate,
   new CreateRankingController().handle
+);
+
+router.get(
+  "/user-ranking",
+  ensureAuthenticate,
+  new GetUserRankingController().handle
 );
 
 export { router };
