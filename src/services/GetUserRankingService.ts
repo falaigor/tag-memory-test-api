@@ -2,7 +2,7 @@ import prismaClient from "../prisma";
 
 class GetUserRankingService {
   async execute(user_id: string) {
-    const ranking = await prismaClient.ranking.findFirst({
+    const ranking = await prismaClient.ranking.findMany({
       orderBy: [
         {
           guessedTags: "desc",
