@@ -1,9 +1,8 @@
 import prismaClient from "../prisma";
 
-class GetTopFiveRankingService {
+export class GetRankingService {
   async execute() {
     const ranking = await prismaClient.ranking.findMany({
-      take: 5,
       orderBy: [
         {
           guessedTags: "desc",
@@ -20,5 +19,3 @@ class GetTopFiveRankingService {
     return ranking;
   }
 }
-
-export { GetTopFiveRankingService };

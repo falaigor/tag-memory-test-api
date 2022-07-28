@@ -11,6 +11,7 @@ app.use(
     origin: [
       "https://tag-memory-test-api-production.up.railway.app",
       "https://tag-memory-test.vercel.app",
+      "http://localhost:3000",
     ],
     optionsSuccessStatus: 200,
   })
